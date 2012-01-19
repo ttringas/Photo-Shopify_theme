@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>{{shop.name}} - {{page_title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  
+    {{ 'screen.css'| asset_url | stylesheet_tag }}
+    <link rel="stylesheet" href="{{ 'print.css' | asset_url}}" type="text/css" media="print">	
+    <!--[if lt IE 8]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
+    {{ 'style.css' | asset_url | stylesheet_tag }}
+
+    {{ 'jquery-1.4.2.min.js' | asset_url | script_tag }}
+    <script type="text/javascript">
+      jQuery.noConflict();
+    </script>
+    
+    {{ 'prototype/1.6/prototype.js'           | global_asset_url  | script_tag }}
+    {{ 'scriptaculous/1.8.2/scriptaculous.js' | global_asset_url  | script_tag }}
+    {{ 'option_selection.js'                  | asset_url | script_tag }}
+
+    
+    {{ content_for_header }}
+  </head>
+
+  <body id="page-{{template}}">
+    <div class="container">
+  
+      <div id="header_wrapper" class="span-46 last">
+        <div id="header_photography">
+          <img src="{{ 'photography.png' | asset_url}} ">
+        </div>
+        <div id="header">
+          <div id="main_menu">
+            <ul id="main_menu_links" class="prepend-1 span-33 first">
+              {% for link in linklists.main-menu.links %}
+              <a href="{{ link.url }}">{{ link.title }}</a> |
+              {% endfor %}
+              <a href="/cart">Cart {% if cart.item_count > 0 %} ({{cart.item_count}}) {% endif %}</a>
+            </ul>
+            <div id="right_menu_info" class="span-12 last">
+              <div class="phone_number">1.888.6327</div> |
+              <div class="email">support@phototheme.com</div>
+            </div>
+          </div>
+        </div> 
+      </div> <!-- header_wrapper -->
+
+      <div id="main_wrapper" class="span-46 last">
+	
+	      {{ content_for_layout }}
+  
+        <div id="footer" class="span-46 last">
+          <div id="copyright">Copyright 2010 CoolShopifyThemes.com</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+

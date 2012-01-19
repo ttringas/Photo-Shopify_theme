@@ -1,0 +1,78 @@
+<div id="main" class="span-46 last">
+
+
+  <div id="sidebar" class="span-7 first">
+    <div class="title">
+      collections
+    </div>
+    <ul id="collections">
+  
+    {% for collection in collections %}
+      {% if collection.title != 'Frontpage' %}
+        <li><a href="{{collection.url}}" class="grey_link" title="{{collection.title}}">{{collection.title}}</a></li>
+      {% endif %}
+    {% endfor %}
+  
+    </ul>
+  </div>
+
+
+  <div id="product_top_info" class="span-39 last">
+  
+    <div id="product_main_image" class="product_image span-18">
+      <img id="main_image" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{product.title | escape }}" height="345" width="345">
+    </div>
+
+    <div id="product_preview_images" class="prepend-1 span-20 last">
+	    <div id="product_preview_images_l">
+	      <div class="product_preview_img">
+		      <table id="product_preview_img_table">
+          {% tablerow image in product.images cols:5 %} 
+            <a class="link_product_preview_img" href="#" onclick="$('main_image').src = '{{image | product_img_url: 'large'}}'; return(false);">
+              <img src="{{image | product_img_url: 'large' }}" height="45" width="45">
+            </a>
+          {% endtablerow %}
+		      </table>
+		    </div>
+		  </div>					
+
+      <div class="add_to_cart">
+        <div class="title cyan_text">choose your style options</div>
+
+        <form id="options_form" method="post" action="/cart/add">
+
+
+          {% for variant in product.variants %}
+            {% if variant.available %}
+              <input type="radio" name="id" value="{{ variant.id }}" /> {{ variant.price | money }} - {{ variant.title }} <br/>
+            {% else %}
+              <input disabled="disabled" type="radio" name="id" value="{{ variant.id }}" /> {{ variant.price | money }} - {{ variant.title }} - SOLDOUT <br/>
+            {% endif %}
+          {% endfor %}
+
+          <input type="image" src="{{ 'add_to_cart.jpg' | asset_url }}">
+        </form>
+      </div>
+		
+	  </div><!-- product_top_info -->
+	
+	  <div id="product_bottom_info" class="span-39 last">
+		  <div class="product_title">{{ product.name }}</div>
+		  <div class="product_price">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</div>
+		  <div class="product_information grey_text span-25 first append-13">
+        {{product.description}}
+			</div>
+			<div class="clear">&nbsp;</div>
+			<div class="continue_browsing">
+  			<a href="{{collection.url}}" class="white_link">Continue browsing this Collection &gt;</a>
+			</div>
+		</div>
+
+  </div>
+
+
+</div><!-- main -->
+
+
+
+

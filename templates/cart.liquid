@@ -1,0 +1,89 @@
+<script type="text/javascript">
+  function remove_item(id) {
+      document.getElementById('updates_'+id).value = 0;
+      document.getElementById('cartform').submit();
+  }
+</script>
+
+<div id="main" class="span-46 last">
+
+  <div id="sidebar" class="span-7 first">
+    <div class="title">
+      collections
+    </div>
+    <ul id="collections">
+  
+    {% for collection in collections %}
+      {% if collection.title != 'Frontpage' %}
+        <li><a href="{{collection.url}}" class="grey_link" title="{{collection.title}}">{{collection.title}}</a></li>
+      {% endif %}
+    {% endfor %}
+  
+    </ul>
+  </div>
+
+  <div class="span-39 last" id="cart_wrapper">
+    
+    <div id="cart_content">
+      <div class="title">my cart</div>
+      
+      <form action="/cart" method="post" id="cartform">
+      
+      <table class="cart">
+        <tr class="rotules">
+          <td class="td_item" colspan="2">item</td>
+          <td class="td_quantity">quantity</td>
+          <td class="td_x">&nbsp;</td>
+          <td class="td_price">price</td>
+          <td class="td_equal">&nbsp;</td>
+          <td class="td_total">total</td>
+          <td class="td_checkout">&nbsp;</td>
+        </tr>
+
+        {% for item in cart.items %}
+        <tr>
+          <td class="td_image"><img src="{{item.product.featured_image | product_img_url }}" alt="{{item.title | escape }}" /></td>
+          <td class="td_item_name">{{item.title}}</td>
+          <td><input type="text" class="quantity_text" value="{{item.quantity}}" name="updates[{{item.variant.id}}]" id="updates_{{item.variant.id}}" /></td>
+          <td>x</td>
+          <td>{{ item.price | money }}</td>
+          <td>=</td>
+          <td>{{ item.line_price | money }}</td>
+          <td><a href="#" class="remove" onclick="remove_item({{item.variant.id}}); return false;">remove</a></td>
+        </tr>
+        {% endfor %}
+
+        <tr class="rotules">
+          <td colspan="2">&nbsp;</td>
+          <td><input type="image" src="{{ 'update_button.jpg' | asset_url }}" name="update" value="Update" id="update-cart" /></td>
+          <td>&nbsp;</td>
+          <td>subtotal</td>
+          <td>=</td>
+          <td>{{ cart.total_price | money }}</td>
+          <td><input type="image" src="{{ 'checkout_button.jpg' | asset_url }}" name="checkout" value="Checkout" title="Checkout" /></td>
+        </tr>
+      </table>
+
+      </form>
+
+      <div class="cart_sections">
+
+        <div class="cart_section">
+          <div class="title">Terms and Conditions</div>
+          <div class="section_text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et male suada fames ac turpis egestas.</div>
+        </div>
+
+        <div class="cart_section">
+          <div class="title">Store Policies</div>
+          <div class="section_text">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Pellentesque habitant morbi tristique senectus et netus et male suada fames ac turpis egestas.</div>
+        </div>
+
+      </div><!-- cart_sections -->
+
+    </div><!-- cart_content -->
+
+  </div><!-- cart-wrapper -->
+
+
+</div><!-- main -->
+
