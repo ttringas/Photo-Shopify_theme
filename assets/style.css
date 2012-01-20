@@ -7,6 +7,15 @@ body {
 	color: #FFF;
 }
 
+a, a:visited {
+  color:#FFF;
+  text-decoration:none;
+}
+
+a:hover {
+  color:#09C;
+}
+
 #main {
 	min-height: 780px;
 	position: relative;
@@ -17,15 +26,7 @@ body {
 	margin-top: 20px;
 }
 
-#footer {
-	font-size: 0.88em;
-	color: #919191;
-	text-align: right;
-	height: 30px;
-	bottom: 0px;
-	width: 100%;
-	clear: both;
-}
+
 
 .bolder {font-weight: bolder;}
 
@@ -39,10 +40,12 @@ a.grey_link:hover {color: #919191; text-decoration: underline;}
 a.white_link {color: #fff; text-decoration: none;}
 a.white_link:hover {color: #fff; text-decoration: underline;}
 
-/* BEGIN: Header styles */
+/* ########################################################
+                         Header & Footer
+ ######################################################## */
 
 #header_wrapper {
-	margin-top: 55px;
+	margin-top: 75px;
 	position: relative;
 }
 
@@ -53,41 +56,65 @@ a.white_link:hover {color: #fff; text-decoration: underline;}
 	left: -4px;
 }
 
-#header {
+header {
 	height: 50px;
 	clear: both;
 	position: relative;
 	background: #434343;
 }
 
-#header #main_menu {
+header #main_menu {
 	padding-top: 15px;
 	text-align: left;
 	color: #FFF;
 }
 
-#header #right_menu_info div {
+header #main_menu li {
+  display: inline-block;
+  border-left: 1px solid #fff;
+  padding: 0 5px;
+}
+
+header #main_menu li.first {
+ border:none; 
+ margin-left:20px;
+}
+
+header #right_menu_info div {
 	display: inline;
 	margin: 0 5px 0 5px;
 }
 
-#right_menu_info .phone_number {
+#contact_info {
+  padding-top: 15px;
+  text-align:right;
+}
+
+#contact_info .phone_link {
 	color: #42aebb;
 }
 
-#main_menu #main_menu_links {
-	font-size: 0.95em;
+#contact_info .email_link {
+  margin-right:20px;
 }
 
-#main_menu #main_menu_links a {
-	padding-left: 5px;
-	padding-right: 5px;
-	color: #FFF;
-	text-decoration: none;
-}	
+footer {
+	font-size: 0.88em;
+	color: #919191;
+	text-align: right;
+	height: 30px;
+	bottom: 0px;
+	width: 100%;
+	clear: both;
+}
 
-#main_menu #main_menu_links a:hover {
-	text-decoration: underline;
+#footer_nav {
+  float:right;
+}
+
+#footer_nav li {
+  display:inline-block;
+  margin:0 10px;
 }
 
 /* END: Header styles */
@@ -108,7 +135,9 @@ a.white_link:hover {color: #fff; text-decoration: underline;}
 
 
 
-/* BEGIN: Index styles */
+/* ########################################################
+                         Index
+ ######################################################## */
 
 #index_photo {
 	margin-bottom: 25px;
@@ -120,7 +149,7 @@ a.white_link:hover {color: #fff; text-decoration: underline;}
 
 #index_newsletter input {
 	width: 180px;
-	height: 30px;
+	height: 20px;
 	color: #a9a9a9;
 	font-size: 1.05em;
 	padding-left: 10px;

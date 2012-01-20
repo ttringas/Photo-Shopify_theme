@@ -3,57 +3,103 @@
   <head>
     <title>{{shop.name}} - {{page_title}}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  
-    {{ 'screen.css'| asset_url | stylesheet_tag }}
+    <meta name="author" content="">
+	  <meta name="robots" content="index,follow"/>
+	  <meta name="description" content="">		  
+		<!-- Facebook Open Graph -->
+		
+		{% if template=="product" %}
+		<meta property="og:title" content="{{ product.title }}" />
+    <meta property="og:type" content="product" />
+    <meta property="og:url" content="{{ product.url }}" />
+    <meta property="og:image" content="{{ product.featured_image }}" />
+    <meta property="og:site_name" content="{{ shop.name | escape }}" />
+    {% endif %}
+		<!-- Mobile Specific Metas -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	  {{ content_for_header }}
+	  <!-- Stylesheets -->
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'skeleton.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'print.css' | asset_url}}" type="text/css" media="print">	
     <!--[if lt IE 8]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
     {{ 'style.css' | asset_url | stylesheet_tag }}
-
-    {{ 'jquery-1.4.2.min.js' | asset_url | script_tag }}
+    <!-- Scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
       jQuery.noConflict();
     </script>
-    
-    {{ 'prototype/1.6/prototype.js'           | global_asset_url  | script_tag }}
-    {{ 'scriptaculous/1.8.2/scriptaculous.js' | global_asset_url  | script_tag }}
-    {{ 'option_selection.js'                  | asset_url | script_tag }}
-
-    
-    {{ content_for_header }}
+    {{ 'option_selection.js' | asset_url | script_tag }}
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
-
   <body id="page-{{template}}">
     <div class="container">
-  
-      <div id="header_wrapper" class="span-46 last">
+      <div id="header_wrapper" class="sixteen columns">
         <div id="header_photography">
           <img src="{{ 'photography.png' | asset_url}} ">
         </div>
-        <div id="header">
-          <div id="main_menu">
-            <ul id="main_menu_links" class="prepend-1 span-33 first">
-              {% for link in linklists.main-menu.links %}
-              <a href="{{ link.url }}">{{ link.title }}</a> |
-              {% endfor %}
-              <a href="/cart">Cart {% if cart.item_count > 0 %} ({{cart.item_count}}) {% endif %}</a>
-            </ul>
-            <div id="right_menu_info" class="span-12 last">
-              <div class="phone_number">1.888.6327</div> |
-              <div class="email">support@phototheme.com</div>
-            </div>
-          </div>
-        </div> 
-      </div> <!-- header_wrapper -->
-
-      <div id="main_wrapper" class="span-46 last">
+        <div class="row">  
+          <header>
+            <nav id="main_menu" class="ten columns alpha">
+              <ul class="nav">
+                {% for link in linklists.main-menu.links %}{% assign current = false %}
+                  {% if template == 'index' and link.url == '/' %}
+                    {% assign current = true %}
+                  {% elsif collection.url == link.url %}
+                    {% assign current = true %}
+                  {% elsif blog.url == link.url %}
+                    {% assign current = true %}
+                  {% elsif page.url == link.url %}
+                    {% assign current = true %}
+                  {% elsif page_title == link.title %}
+                    {% assign current = true %}
+                  {% elsif template == 'list-collections' and link.url == '/collections' %}
+                    {% assign current = true %}
+                  {% elsif page_title == 'Products' and link.url == '/collections/all' %}
+                    {% assign current = true %}
+                  {% elsif template == 'article' and link.url == article.url %}
+                    {% assign current = true %}{% endif %}
+                  <!-- {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %} -->
+                  <li {% if forloop.first %}class="first"{% endif %} {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}class="dropdown" data-dropdown="dropdown"{% endif %}>
+                      <a class="{% if current %}active{% endif %}{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %} dropdown-toggle{% endif %}" href="{{ link.url }}">{{ link.title }}</a>        
+                      <!-- {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
+                                            <ul class="dropdown-menu">
+                                              {% for l in linklists[child_list_handle].links %}
+                                              <li><a href="{{ l.url }}">{{ l.title }}</a></li>
+                                              {% endfor %}
+                                            </ul>
+                                            {% endif %} -->
+                    </li>
+                  {% endfor %}
+              </ul>
+            </nav>      
+            <div class="six columns omega" id="contact_info">
+              <a href="tel:18883216237" class="phone_link">1.888.321.6237</a> |
+              <a href="mailto:support@phototheme.com?subject=hi" class="email_link">support@phototheme.com</a>
+            </div><!-- .contact_info -->
+          </header>
+        </div><!-- .row -->
+      </div><!-- header_wrapper -->
+      <div id="main_wrapper" class="sixteen columns">
 	
 	      {{ content_for_layout }}
-  
-        <div id="footer" class="span-46 last">
-          <div id="copyright">Copyright 2010 CoolShopifyThemes.com</div>
-        </div>
-      </div>
-    </div>
+	      
+      </div><!-- main_wrapper -->  
+      <footer class="sixteen columns clearfix">
+        <nav>
+          <ul id="footer_nav">
+            {% for link in linklists.footer.links %}
+            <li><a href="{{ link.url }}" title="{{ link.title }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+        <div id="copyright">&copy; {{ shop.name | escape }} {{ 'now' | date: "%Y" }}</div>
+      </footer>
+    </div><!-- container -->
   </body>
 </html>
 
