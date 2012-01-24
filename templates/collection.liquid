@@ -24,16 +24,22 @@
       <div id="collection_main_image">
         <a id="main_link" href="{{ collection.products.first.url | within: collection }}">
           <img id="main_img" src="{{ collection.products.first.featured_image | product_img_url: 'grande' }}" width="690" height="690">
+          <div id="product_details_hover">
+            <h3>{{ collection.products.first.title }}</h3>
+            <p>
+              <span class="hover_price">{{ collection.products.first.price | money_with_currency }}</span>
+              <a class="hover_link" href="{{ collection.products.first.url | within: collection }}">View</a>
+            </p>
+          </div>
         </a>  
-        <!-- <div id="collection_info_details">
-          Click here for pricing info</a>
-        </div> -->
       </div>
       <div id="collection_preview">
         {% for product in collection.products %} 
           <div class="product_image">
             <a href="{{ product.url | within: collection }}" title="{{ product.title }}" class="product_image_preview">
               <img src="{{ product.featured_image | product_img_url: 'grande' }}" height="90" width="90">
+              <input type="hidden" name="price" value="{{ product.price | money_with_currency }}" id="price">
+              <input type="hidden" name="title" value="{{ product.title }}" id="title">
             </a>
           </div>
         {% endfor %}

@@ -22,7 +22,7 @@ $(document).ready(function(){
    
    //correct weird positioning of slider ####possibly need to fix this later
    $('.bx-wrapper').css(
-     {'position' : 'absolute', 'right' : '0', 'top' : '182px'}
+     {'position' : 'absolute', 'right' : '0', 'top' : '162px'}
      );
    
     $('#collection_preview a').click(function() {
@@ -31,6 +31,14 @@ $(document).ready(function(){
         return false;
     });
    
-    
+    $('#product_details_hover').hide();
+    $('#collection_main_image').hover(
+      function(){
+        $('#product_details_hover').fadeIn('fast');
+      },
+      function(){
+        $('#product_details_hover').fadeOut('fast');
+      }
+    );
    
  });

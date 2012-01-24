@@ -44,7 +44,7 @@ a.white_link:hover {color: #fff; text-decoration: underline;}
  ######################################################## */
 
 #header_wrapper {
-	margin-top: 75px;
+	margin-top: 65px;
 	position: relative;
 }
 
@@ -73,6 +73,10 @@ header #main_menu li {
   border-left: 1px solid #fff;
   padding: 0 8px;
   font-size:83%;
+}
+
+header ul.nav {
+  margin-bottom:10px;
 }
 
 header #main_menu li.first {
@@ -123,7 +127,7 @@ footer {
 }
 
 #copyright {
-  float:right;
+  float:left;
 }
 
 /* END: Header styles */
@@ -144,6 +148,37 @@ footer {
 
 #index_photo {
 	margin-bottom: 25px;
+	height:420px;
+	background:#fff;
+}
+
+.front_image{
+  background:#fff;
+  padding:10px;
+}
+
+#front_image_1{
+  position:absolute;
+  left:0.1;
+}
+
+#front_image_2{
+  position:absolute;
+  left:265px;
+  z-index:99999;
+  transform: rotate(5deg);
+  -ms-transform: rotate(5deg); 
+  -webkit-transform: rotate(5deg);
+  -o-transform: rotate(5deg); 
+  -moz-transform: rotate(5deg); 
+   -webkit-animation-duration: 2s;
+	 -webkit-animation-iteration-count: 1;
+	 -webkit-animation-timing-function: ease-in-out;
+}
+
+#front_image_3{
+  position: absolute;
+  left:530px;
 }
 
 #index_photo img {
@@ -207,6 +242,14 @@ footer {
 	padding-left:15px;
 }
 
+#signup_errors{
+  margin-top:55px;
+}
+
+#signup_errors ul li{
+  color:red;
+}
+
 /* ########################################################
                          Collection
  ######################################################## */
@@ -218,7 +261,7 @@ div#collections_wrapper {
 
 #sidebar .title {
 	font-size: 1.5em;
-	line-height: 1.8em;
+	line-height: 1em;
 }
 
 ul#collections {
@@ -240,7 +283,7 @@ ul#collections li {
 #collections_bottom {margin-top: 10px;}
 
 #collections_top img, #collections_bottom img {
-	padding-left: 870px;
+	padding-left: 865px;
 }
 
 #collection_viewer {
@@ -269,6 +312,7 @@ div.bx-wrapper{
 #collection_main_image {
 	position: relative;
 	float: left;
+	height:700px;
 }
 
 #collection_main_image img {
@@ -309,9 +353,64 @@ div.bx-wrapper{
 	font-weight: bolder;
 }
 
-/* END: Collection styles */
+#product_details_hover {
+  width:640px;
+  margin:auto;
+  position:relative;
+  top:-95px;
+  background:#333;
+  padding:0 25px;
+  height:85px;
+  zoom: 1;
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+}
 
-/* BEGIN: Product styles */
+#product_details_hover h3 {
+  color:#fff;
+}
+
+#product_details_hover .hover_link {
+  float: right;
+  background:#888;
+  padding:5px 10px;
+  display:block;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  font-weight:bold;
+
+}
+
+#product_details_hover .hover_link:hover {
+  color:#fff;
+  background:#09C;
+}
+
+
+
+/* ########################################################
+                         Product
+ ######################################################## */
+
+
+
+#product_details {
+  float:right;
+  width:400px;
+}
+
+#product_details h1 {
+  color:#fff;
+}
+
+#product_main_image {
+  width:345px;
+  float:left;
+  background:#fff;
+  padding:10px;
+  margin-left:20px;
+}
 
 #product_top_info .product_image img {
 	padding: 9px;

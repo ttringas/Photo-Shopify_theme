@@ -1,7 +1,13 @@
 <div id="main">
 
   <div id="index_photo" class="clearfix">
-    <img src="{{ 'main_image.jpg' | asset_url }}">
+    {% for product in collections.front-page.products limit:3 %}
+    {% assign index = forloop.index %}
+      <div id="front_image_{{ index }}" class="front_image">
+        <a href="{{ product.url }}" title="{{ product.title }}"><img src="{{ product.featured_image | product_img_url: 'grande' }}" height="400" width="400"></a>        
+      </div>
+    {% endfor %}
+      
   </div>
 
   <div id="index_newsletter" class="four columns alpha">
@@ -12,6 +18,17 @@
     <div id="newsletter_signup">
       <input type='image' src="{{ 'signup.png' | asset_url }}" class="submit" />
     </div>
+    {% if form.errors %}
+    <div id="signup_errors">
+      <p class="error-msg">
+      <ul class="error-list">
+      {% for field in form.errors %}
+        <li>{{ field }} - {{ form.errors.messages[field] }}</li>
+      {% endfor %}
+      </ul>
+    </p>
+    </div>
+    {% endif %}
     {% endform %}
   </div><!-- index_newsletter -->
   
