@@ -17,13 +17,12 @@ a:hover {
 }
 
 #main {
-	min-height: 780px;
-	position: relative;
+	min-height: 600px;
 	text-align: left;
 }
 
 #main_wrapper {
-	margin-top: 20px;
+	margin-top: 5px;
 }
 
 
@@ -72,7 +71,8 @@ header #main_menu {
 header #main_menu li {
   display: inline-block;
   border-left: 1px solid #fff;
-  padding: 0 5px;
+  padding: 0 8px;
+  font-size:83%;
 }
 
 header #main_menu li.first {
@@ -88,14 +88,19 @@ header #right_menu_info div {
 #contact_info {
   padding-top: 15px;
   text-align:right;
+  font-size:90%;
 }
 
 #contact_info .phone_link {
 	color: #42aebb;
 }
 
+#contact_info a {
+  margin: 0 5px;
+}
+
 #contact_info .email_link {
-  margin-right:20px;
+  margin-right:10px;
 }
 
 footer {
@@ -117,6 +122,10 @@ footer {
   margin:0 10px;
 }
 
+#copyright {
+  float:right;
+}
+
 /* END: Header styles */
 
 /* BEGIN: Pagination */
@@ -129,12 +138,6 @@ footer {
 	color: #93908E;
 }
 
-/* END: Pagination */
-
-/* END: general styles and layout */
-
-
-
 /* ########################################################
                          Index
  ######################################################## */
@@ -143,12 +146,16 @@ footer {
 	margin-bottom: 25px;
 }
 
+#index_photo img {
+  max-width:100%;
+}
+
 #index_newsletter {
 	position: relative;
 }
 
-#index_newsletter input {
-	width: 180px;
+#index_newsletter input[type="text"] {
+	width: 190px;
 	height: 20px;
 	color: #a9a9a9;
 	font-size: 1.05em;
@@ -161,8 +168,8 @@ footer {
 
 #index_newsletter #newsletter_signup {
 	position: absolute;
-	right: -34px;
-	top: 51px;
+	right: -10px;
+	top: 50px;
 	cursor: pointer;
 }
 
@@ -173,7 +180,11 @@ footer {
 
 #index_news .image {
 	border-right: solid 1px #1f8eb6;
-	width: 140px !important;
+  text-align:right;
+}
+
+#index_news .image img {
+  margin-right:20px;
 }
 
 #index_news .separator {
@@ -185,6 +196,7 @@ footer {
 
 #index_news .news .title_section {
 	font-size: 1.15em;
+	padding-left:15px;
 }
 
 
@@ -192,12 +204,17 @@ footer {
 	margin-top: 10px;
 	font-size: 0.9em;
 	line-height: 150%;
+	padding-left:15px;
 }
 
-/* END: Index styles */
+/* ########################################################
+                         Collection
+ ######################################################## */
 
-
-/* BEGIN: Sidebar collections */
+div#collections_wrapper {
+  margin-left:-10px;
+  width:840px;
+}
 
 #sidebar .title {
 	font-size: 1.5em;
@@ -216,10 +233,6 @@ ul#collections li {
 	margin-bottom: 5px;
 }
 
-/* END: Sidebar collections */
-
-/* BEGIN: Collection styles */
-
 #collections_top, #collections_bottom {
 	height: 25px;
 }
@@ -227,13 +240,30 @@ ul#collections li {
 #collections_bottom {margin-top: 10px;}
 
 #collections_top img, #collections_bottom img {
-	padding-left: 890px;
+	padding-left: 870px;
 }
 
 #collection_viewer {
 	background: #FFF;
-	height: 697px;
-	margin-left: 14px;
+	height: 710px;
+	margin-left: 30px;
+}
+
+#collection_preview {
+  width:110px;
+  height:680px;
+  position:absolute;
+  right:0;
+}
+
+div.bx-wrapper{
+  position:absolute;
+  right:0;
+}
+
+.product_image {
+  width: 110px;
+  height:100px;
 }
 
 #collection_main_image {
@@ -242,7 +272,7 @@ ul#collections li {
 }
 
 #collection_main_image img {
-	padding: 9px;
+	padding: 10px;
 }
 
 #product_preview_img_table {
@@ -250,12 +280,22 @@ ul#collections li {
 }
 
 #collection_preview {
-	padding: 9px 9px 0 0;
+ float:right; 
+}
+
+/*#collection_preview {
+  padding: 9px 9px 0 0;
+  width:81px;
+  float:right;
+  height:500px;
+  overflow:hidden;
 }
 
 .product_image img {
-	border: 0;
-}
+  border: 0;
+  max-width:100%;
+  height:auto;
+}*/
 
 #collection_info_details {
 	position: absolute;

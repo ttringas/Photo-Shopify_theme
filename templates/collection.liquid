@@ -1,17 +1,17 @@
-<div id="collections_top" class="span-46 last">
-  <a href="#" class="collection_up_link"><img src="{{ 'up_arrow.png' | asset_url }}" class="prepend-42"></a>
+<div id="collections_top" class="sixteen columns">
+    <a href="#" id="up_arrow" class="collection_up_link"><img src="{{ 'up_arrow.png' | asset_url }}"></a>
 </div>
 
-<div id="main" class="span-46 last">
+<div id="main">
 
-  <div id="sidebar" class="span-7 first">
+  <div id="sidebar" class="two columns alpha">
     <div class="title">
       collections
     </div>
     <ul id="collections">
 
     {% for collection in collections %}
-      {% if collection.title != 'Frontpage' %}
+      {% if collection.title != 'Front Page' %}
         <li><a href="{{collection.url}}" class="grey_link" title="{{collection.title}}">{{collection.title}}</a></li>
       {% endif %}
     {% endfor %}
@@ -19,76 +19,34 @@
     </ul>
   </div>
 
-  <div class="span-39 last" id="collections_wrapper">
-    <div id="collection_viewer">
+  <div class="fourteen columns omega" id="collections_wrapper">
+     <div id="collection_viewer">
       <div id="collection_main_image">
-        <img id="main_img" src="{{ collection.products.first.featured_image | product_img_url: 'large' }}" width="682" height="679">
-        <div id="collection_info_details">
-          <a id="main_link" href="{{ collection.products.first.url | within: collection }}" title="{{ collection.products.first.title }}" class="grey_link">Click here for pricing info</a>
-        </div>
+        <a id="main_link" href="{{ collection.products.first.url | within: collection }}">
+          <img id="main_img" src="{{ collection.products.first.featured_image | product_img_url: 'grande' }}" width="690" height="690">
+        </a>  
+        <!-- <div id="collection_info_details">
+          Click here for pricing info</a>
+        </div> -->
       </div>
       <div id="collection_preview">
-
         {% for product in collection.products %} 
-        <div class="product_image">
-          <a href="{{ product.url | within: collection }}" title="{{ product.title }}" class="product_image_preview">
-            <img src="{{ product.featured_image | product_img_url }}" height="90" width="90" style="margin-bottom: 3.8px;" onclick="jQuery('#main_img').attr('src', '{{ product.featured_image | product_img_url: "large" }}');jQuery('#main_link').attr('href', '{{ product.url | within: collection }}');return(false);">
-          </a>
-        </div>
+          <div class="product_image">
+            <a href="{{ product.url | within: collection }}" title="{{ product.title }}" class="product_image_preview">
+              <img src="{{ product.featured_image | product_img_url: 'grande' }}" height="90" width="90">
+            </a>
+          </div>
         {% endfor %}
+      </div><!-- collection_preview -->
+    </div><!-- collection_viewer -->
+  </div><!-- collections_wrapper -->
 
-      </div>
-    </div>
-  </div>
-
-  <div id="collections_bottom" class="span-46 last">
-    <a href="#" class="collection_down_link"><img src="{{ 'down_arrow.png' | asset_url }}" class="prepend-42"></a>
+  <div id="collections_bottom" class="sixteen columns clearfix">
+    <a href="#" id="down_arrow" class="collection_down_link"><img src="{{ 'down_arrow.png' | asset_url }}"></a>
   </div>
 
 </div><!-- main -->
 
-<script type="text/javascript">
-jQuery(document).ready(function() {
-  window.images = jQuery(".product_image_preview");
-  window.images_count = jQuery(".product_image_preview").size();
-  window.images_idx = 0;
-  
-  if (window.images_count > 7) {
-    // Hide photos
-    cycle_photos(0);
-    // Events for cycling buttons
-    jQuery('.collection_up_link').click(function(e) {
-      e.preventDefault();
-      cycle_photos(-1);
-    });
-    jQuery('.collection_down_link').click(function(e) {
-      e.preventDefault();
-      cycle_photos(1);
-    });     
-  } else {
-    jQuery('#collections_top a, #collections_bottom a').hide();
-  }
-});
-function cycle_photos(steps) {
-  var new_index = window.images_idx + steps;
-  if (new_index > window.images_count) 
-    new_index -= window.images_count;
-  else if (new_index < 0) {
-    new_index += window.images_count;
-  }
-  window.images_idx = new_index;
-  jQuery("#collection_preview").empty();
-  for (i = 0; i < 7; i++) {
-    var j = new_index + i;
-    if (j > (window.images_count - 1)) j -= window.images_count;
-    if (i == 0) {
-      jQuery("#collection_preview").html(images[j]);
-    } else {
-      jQuery(images[j]).insertAfter("#collection_preview a:last");
-    }
-  }   
-}
-</script>
 
 
 

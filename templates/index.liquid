@@ -1,28 +1,31 @@
-<div id="main" class="span-46 last">
+<div id="main">
 
-  <div id="index_photo" class="clear">
+  <div id="index_photo" class="clearfix">
     <img src="{{ 'main_image.jpg' | asset_url }}">
   </div>
 
-  <div id="index_newsletter" class="span-9 first">
+  <div id="index_newsletter" class="four columns alpha">
+    {% form 'customer' %}
     <div class="title">WANT TO STAY IN TOUCH?</div>
-    <input type="text" value="Enter Email Address">
+    <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
+    <input type="text" id="contact_email" name="contact[email]" placeholder="Email Address...">
     <div id="newsletter_signup">
-      <img src="{{ 'signup.png' | asset_url }}">  
+      <input type='image' src="{{ 'signup.png' | asset_url }}" class="submit" />
     </div>
-  </div>
+    {% endform %}
+  </div><!-- index_newsletter -->
   
-  <div id="index_news" class="prepend-5 span-32 last">
-    <div class="image span-7 first"><img src="{{ 'news_photo.jpg' | asset_url }}"></div>
-    <div class="news prepend-1 span-24 last">
-      <div class="title_section">
-        News :
-        <span class="bolder">Holga invasion!</span>            
-      </div>
-      <div class="title_content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      </div>
-    </div>
-  </div>
+  <div id="index_news">
+    <article class="news">
+      <section class="image three columns offset-by-one omega"><img src="{{ 'news_photo.jpg' | asset_url }}"></section>
+      {% for article in blogs.news.articles limit:1 %}
+      <section class="title_section eight columns alpha omega">
+        <a href="{{ article.url }}" title="{{ article.title }}">News : <span class="bolder">{{ article.title }}</span></a>
+      </section>
+      <section class="title_content eight columns alpha omega">{{ article.content }}</section>
+      {% endfor %}
+    </article>
+  </div><!-- index_news -->
 
 </div><!-- main -->
 
