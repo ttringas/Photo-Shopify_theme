@@ -80,6 +80,16 @@
       </footer>
     </div><!-- container -->
   </body>
+  <script src="http://twitterjs.googlecode.com/svn/trunk/src/twitter.min.js" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8">
+  getTwitters('tweets', { 
+    id: 'designRACY', 
+    count: 5, 
+    enableLinks: true,  
+    clearContents: true,
+    template: '"%text%" <a href="http://twitter.com/%user_screen_name%/statuses/%id_str%/">%time%</a>'
+  });
+  </script>
 </html>
 
 

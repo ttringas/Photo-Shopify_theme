@@ -535,6 +535,25 @@ div.bx-wrapper{
   border-bottom:2px solid #fff;
 }
 
+.article_thumbnail {
+  float:left;
+  width:240px;
+}
+
+.article_thumbnail img {
+  width:100%;
+}
+
+.article_content {
+  float:right;
+  width:440px;
+  margin-top:15px;
+}
+
+.article_content.first {
+  margin-top:0;
+}
+
 .post .title {
 	font-size: 1.6em;
 	line-height: 2.2em;
@@ -555,7 +574,6 @@ div.bx-wrapper{
 }
 
 #blog_archives {
-  float:right;  
   padding-top: 15px;
 }
 
@@ -568,12 +586,9 @@ div.bx-wrapper{
   font-style: italic;
 }
 
-/* END: Blog styles */
-
-/* BEGIN: Article styles */
 
 .article {
-  padding-top: 15px;
+  padding-top: 5px;
   padding-bottom: 15px;
 }
 
@@ -588,6 +603,13 @@ div.bx-wrapper{
 
 .article .content {
 	line-height: 1.8em;
+}
+
+.article .content img {
+  background:#fff;
+  padding:10px;
+  text-align:center;
+  width:100%;
 }
 
 .article .content p {

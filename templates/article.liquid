@@ -1,10 +1,10 @@
-<div id="main" class="span-46 last">
-
-  <div class="article prepend-1 span-44 append-1">
+<div id="main" class="sixteen columns">
+<div id="article" class="ten columns alpha">
+  <div class="article">
     <div class="title">{{ article.title }}</div>
     <div class="date cyan_text">{{ article.created_at | date: "%B %d, %Y" }}</div>
     <div class="content grey_text">
-      {{ article.content | strip_html }}
+      {{ article.content }}
     </div>
   </div>
 
@@ -73,5 +73,24 @@
 {% endif %}
 <!-- END Comments -->
 
+</div>
+<div id="blog_sidebar" class="four columns offset-by-two omega">
+  <div id="blog_archives" class="clearfix">
+    <h3>Recent Articles</h3>
+      <ul id="archive_links">
+    {% for article in blog.articles limit:10 %}
+      <li><a href="{{article.url}}" class="archive_link">{{article.title}}</a></li>
+    {% endfor %}
+      </ul>
+  </div>
+  <div id="twitter_feed" class="clearfix">
+    <h3>Recent Tweets</h3>
+    <p><a href="https://twitter.com/#!/designRACY">@designRACY</a></p>
+    <div id="tweets">
+      <p>Tweets are loading now</p>
+    </div>
+    
+  </div>
+</div><!-- blog_sidebar -->
 
 </div><!-- main -->

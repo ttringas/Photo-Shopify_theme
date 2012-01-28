@@ -1,23 +1,18 @@
 <div id="main" class="sixteen columns">
-
-<div id="blog_archives" class="six columns omega">
-  <h3>Recent Articles</h3>
-    <ul id="archive_links">
-  {% for article in blog.articles limit:10 %}
-    <li><a href="{{article.url}}" class="archive_link">{{article.title}}</a></li>
-  {% endfor %}
-    </ul>
-</div>
-
-{% paginate blog.articles by 3 %}
-  <div id="blog_post_wrapper" class="ten columns alpha">
+  <div id="blog_post_wrapper" class="twelve columns alpha">
+    {% paginate blog.articles by 3 %}
     {% for article in blog.articles %}
-    <div class="post">
-      <h3><a href="{{article.url}}" class="white_link">{{ article.title }}</a></h3>
-      <div class="date cyan_text">{{ article.created_at | date: "%B %d, %Y" }}</div>
-      <div class="content grey_text">
-        <p>{{ article.content | strip_html | truncate: 750 }} <a href="{{ article.url }}" class="read_more cyan_link">Read More</a></p>
+    <div class="post clearfix">
+      <div class="article_thumbnail">
+        {{ article.excerpt }}
       </div>
+      <div class="article_content {% if forloop.first %}first{% endif %}">        
+        <h3><a href="{{article.url}}" class="white_link">{{ article.title }}</a></h3>
+        <div class="date cyan_text">{{ article.created_at | date: "%B %d, %Y" }}</div>
+        <div class="content grey_text">
+          <p>{{ article.content | strip_html | truncate: 350 }} <a href="{{ article.url }}" class="read_more cyan_link">Read More</a></p>
+        </div>
+      </div>  
     </div><!-- post -->
     {% endfor %}    
     <div class="pagination">
@@ -42,7 +37,25 @@
      </div>
      {% endpaginate %}
   </div><!-- blog_post_wrapper -->
-  
+  <div id="blog_sidebar" class="four columns omega">
+    <div id="blog_archives" class="clearfix">
+      <h3>Recent Articles</h3>
+        <ul id="archive_links">
+      {% for article in blog.articles limit:10 %}
+        <li><a href="{{article.url}}" class="archive_link">{{article.title}}</a></li>
+      {% endfor %}
+        </ul>
+    </div>
+    <div id="twitter_feed" class="clearfix">
+      <h3>Recent Tweets</h3>
+      <p><a href="https://twitter.com/#!/designRACY">@designRACY</a></p>
+      <div id="tweets">
+        <p>Tweets are loading now</p>
+      </div>
+      
+    </div>
+  </div><!-- blog_sidebar -->
+
 
 
 </div><!-- main -->
