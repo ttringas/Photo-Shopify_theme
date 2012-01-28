@@ -39,7 +39,7 @@
       <section class="title_section eight columns alpha omega">
         <a href="{{ article.url }}" title="{{ article.title }}">News : <span class="bolder">{{ article.title }}</span></a>
       </section>
-      <section class="title_content eight columns alpha omega">{{ article.content }}</section>
+      <section class="title_content eight columns alpha omega">{{ article.content | strip_html | truncate: 250 }}</section>
       {% endfor %}
     </article>
   </div><!-- index_news -->

@@ -1,44 +1,49 @@
-<div id="main" class="span-46 last">
+<div id="main" class="sixteen columns">
+
+<div id="blog_archives" class="six columns omega">
+  <h3>Recent Articles</h3>
+    <ul id="archive_links">
+  {% for article in blog.articles limit:10 %}
+    <li><a href="{{article.url}}" class="archive_link">{{article.title}}</a></li>
+  {% endfor %}
+    </ul>
+</div>
 
 {% paginate blog.articles by 3 %}
+  <div id="blog_post_wrapper" class="ten columns alpha">
+    {% for article in blog.articles %}
+    <div class="post">
+      <h3><a href="{{article.url}}" class="white_link">{{ article.title }}</a></h3>
+      <div class="date cyan_text">{{ article.created_at | date: "%B %d, %Y" }}</div>
+      <div class="content grey_text">
+        <p>{{ article.content | strip_html | truncate: 750 }} <a href="{{ article.url }}" class="read_more cyan_link">Read More</a></p>
+      </div>
+    </div><!-- post -->
+    {% endfor %}    
+    <div class="pagination">
+       {% if paginate.next %}
+         {{ "&lt;Older" | link_to: paginate.next.url }}
+       {% endif %}   
 
-  {% for article in blog.articles %}
+       {% for part in paginate.parts %}
+         {% if part.is_link %}
+           {{ part.title | link_to: part.url }}
+         {% else %}
+           {{ part.title }}        
+         {% endif %}
+         {% unless forloop.last %}
+           |
+         {% endunless %}
+       {% endfor %}
 
-  <div class="blog prepend-1 span-44 append-1">
-    <div class="title"><a href="{{article.url}}" class="white_link">{{ article.title }}</a></div>
-    <div class="date cyan_text">{{ article.created_at | date: "%B %d, %Y" }}</div>
-    <div class="content grey_text">
-      <p>{{ article.content | strip_html | truncate: 250 }}</p>
-    	<a href="{{ article.url }}" class="read_more cyan_link">Read More...</a>
-    </div>
-  </div>
+       {% if paginate.previous %}
+         {{ "Newer&gt;" | link_to: paginate.previous.url }}
+       {% endif %}
+     </div>
+     {% endpaginate %}
+  </div><!-- blog_post_wrapper -->
+  
 
-  <div class="blog_separator span-44">&nbsp;</div>
-
-  {% endfor %}
-
-  <div class="pagination prepend-38 span-8">
-    {% if paginate.previous %}
-      {{ "&lt; Previous" | link_to: paginate.previous.url }}
-    {% endif %}
-
-    {% for part in paginate.parts %}
-      {% if part.is_link %}
-        {{ part.title | link_to: part.url }}
-      {% else %}
-        {{ part.title }}        
-      {% endif %}
-      {% unless forloop.last %}
-        |
-      {% endunless %}
-    {% endfor %}
-
-    {% if paginate.next %}
-      {{ "Next &gt;" | link_to: paginate.next.url }}
-    {% endif %}
-  </div>
-
-{% endpaginate %}
 
 </div><!-- main -->
 

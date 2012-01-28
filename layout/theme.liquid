@@ -23,6 +23,7 @@
 	  <!-- Stylesheets -->
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'skeleton.css' | asset_url | stylesheet_tag }}
+    {{ 'colorbox.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'print.css' | asset_url}}" type="text/css" media="print">	
     <!--[if lt IE 8]>{{ 'ie.css' | asset_url | stylesheet_tag }}<![endif]-->
     {{ 'style.css' | asset_url | stylesheet_tag }}
@@ -30,6 +31,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     {{ 'option_selection.js' | asset_url | script_tag }}
     {{ 'jquery.bxSlider.min.js' | asset_url | script_tag }}
+    {{ 'jquery.colorbox-min.js' | asset_url | script_tag }}
     {{ 'theme.js' | asset_url | script_tag }}
 
     <!--[if lt IE 9]>

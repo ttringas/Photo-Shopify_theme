@@ -20,7 +20,7 @@ $(document).ready(function(){
      return false;
    });
    
-   //correct weird positioning of slider ####possibly need to fix this later
+   //correct weird positioning of slider
    $('.bx-wrapper').css(
      {'position' : 'absolute', 'right' : '0', 'top' : '162px'}
      );
@@ -28,6 +28,9 @@ $(document).ready(function(){
     $('#collection_preview a').click(function() {
         $('#collection_main_image a').attr('href', $(this).attr('href')).data('rel', $(this).data('rel'));
         $('#collection_main_image img').attr('src', $(this).children('img').attr('src'));
+        $('#product_details_hover h3').text($(this).find('#title').val());
+        $('.hover_price').text($(this).find('#price').val());
+        
         return false;
     });
    
@@ -40,5 +43,17 @@ $(document).ready(function(){
         $('#product_details_hover').fadeOut('fast');
       }
     );
+   
+   $('.thumbnail_wrapper a').click(function() {
+     $('#product_main_image a').attr('href', $(this).attr('href')).data('rel', $(this).data('rel'));
+     $('#product_main_image img').attr('src', $(this).attr('href'));
+      return false;
+    });
+    
+    $('#product_main_image a').colorbox({
+      rel: 'colorbox'
+    });
+      
+    
    
  });

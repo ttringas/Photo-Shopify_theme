@@ -1,59 +1,57 @@
 <div id="main" class="sixteen columns">
-
-
+  <div id="product_wrapper">
   <div id="sidebar" class="two columns alpha">
     <div class="title">
       collections
     </div>
     <ul id="collections">
-  
-      {% for collection in collections %}
-        {% if collection.title != 'Front Page' %}
-          <li><a href="{{collection.url}}" class="grey_link" title="{{collection.title}}">{{collection.title}}</a></li>
-        {% endif %}
+      {% for link in linklists.collections.links %}
+          <li><a href="{{link.url}}" class="grey_link {% if link.active %} active {% endif %}" title="{{link.title}}">{{link.title}}</a></li>
       {% endfor %}
-  
     </ul>
   </div>
-
-
   <div id="product_top_info" class="fourteen columns omega">
-  
-    <div id="product_main_image" class="span-18">
-      <img id="main_image" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{product.title | escape }}" height="345" width="345">
+    <div id="product_main_image">
+      <a href="{{ product.featured_image | product_img_url: "grande" }}" rel="colorbox"><img id="main_image" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{product.title | escape }}" height="345" width="345"></a>
     </div>
     <div id="product_details">
       <div class="add_to_cart">
-        <div class="product_title"><h1>{{ product.title }}</h1></div>
-        <div class="product_price">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</div>
-        <div class="title cyan_text">choose your style options</div>
-
+        <div class="product_title"><h3>{{ product.title }}</h3></div>
+          <div class="product_information grey_text">
+            {{product.description}}
+    			</div>
+        <!-- <div class="product_price">{{ product.price_min | money }}{% if product.price_varies %} - {{ product.price_max | money }}{% endif %}</div> -->
+        <div class="bold cyan_text style_options">choose your style options</div>
         <form id="options_form" method="post" action="/cart/add">
-          {% for variant in product.variants %}
-            {% if variant.available %}
-              <input type="radio" name="id" value="{{ variant.id }}" /> {{ variant.price | money }} - {{ variant.title }} <br/>
+          <select name="id" id="product_select">
+            {% for variant in product.variants %}
+              {% if variant.available %}
+              <option name="id" value="{{ variant.id }}">{{ variant.price | money }} - {{ variant.title }}</option>
             {% else %}
-              <input disabled="disabled" type="radio" name="id" value="{{ variant.id }}" /> {{ variant.price | money }} - {{ variant.title }} - SOLDOUT <br/>
-            {% endif %}
-          {% endfor %}
-          <input type="image" src="{{ 'add_to_cart.jpg' | asset_url }}">
+              <option name="id" disabled="disabled" value="{{ variant.id }}">{{ variant.price | money }} - {{ variant.title }}</option>
+              {% endif %}
+            {% endfor %}            
+          </select>
+          <div id="product_actions">
+            <input type="image" src="{{ 'add_to_cart.jpg' | asset_url }}">
+            <a href="{{collection.url}}" class="white_link">Continue browsing this Collection &gt;</a>            
+          </div>
         </form>
       </div><!-- add_to_cart -->
-      	
-  	  <div id="product_bottom_info" class="span-39 last">
-  		  <div class="product_information grey_text span-25 first append-13">
-          {{product.description}}
-  			</div>
-  		</div><!-- product_bottom_info -->
-		</div><!-- product_details -->
-			<div class="clear">&nbsp;</div>
-			<div class="continue_browsing">
-  			<a href="{{collection.url}}" class="white_link">Continue browsing this Collection &gt;</a>
-			</div>
-		</div>
-
-
-
+    </div><!-- product_top_info -->
+    <div id="product_bottom" class="sixteen columns clearfix">
+      <div id="product_thumbnails">
+        {% for image in product.images %}
+          <div class="thumbnail_wrapper">
+            <a href="{{ image | product_img_url: "grande" }}" rel="colorbox"><img src="{{ image | product_img_url: "compact" }}" alt="{{ product.title | escape }}" /></a>
+          </div>
+        {% endfor %}
+      </div>
+      <div id="product_tags">
+        
+      </div>
+    </div>
+  </div><!-- product_wrapper -->
 </div><!-- main -->
 
 

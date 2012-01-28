@@ -5,6 +5,11 @@
 body {
 	background: url(bg.jpg) repeat;
 	color: #FFF;
+	font-family:Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color:#fff;
 }
 
 a, a:visited {
@@ -28,10 +33,6 @@ a:hover {
 #main_wrapper {
 	margin-top: 5px;
 }
-
-
-
-.bolder {font-weight: bolder;}
 
 .cyan_text {color: #4dcef0;}
 a.cyan_link {color: #4dcef0; text-decoration: none;}
@@ -60,7 +61,7 @@ a.white_link:hover {color: #fff; text-decoration: underline;}
 }
 
 header {
-	height: 50px;
+	height: 45px;
 	clear: both;
 	position: relative;
 	background: #434343;
@@ -77,6 +78,8 @@ header #main_menu li {
   border-left: 1px solid #fff;
   padding: 0 8px;
   font-size:83%;
+  line-height:12px;
+  float:left;
 }
 
 header ul.nav {
@@ -94,7 +97,7 @@ header #right_menu_info div {
 }
 
 #contact_info {
-  padding-top: 15px;
+  padding-top: 12px;
   text-align:right;
   font-size:90%;
 }
@@ -154,7 +157,7 @@ footer {
  ######################################################## */
 
 #index_photo {
-	margin-bottom: 25px;
+	margin: 25px 0;
 	height:420px;
 	background:#fff;
 }
@@ -339,14 +342,6 @@ div.bx-wrapper{
  float:right; 
 }
 
-/*#collection_preview {
-  padding: 9px 9px 0 0;
-  width:81px;
-  float:right;
-  height:500px;
-  overflow:hidden;
-}
-
 .product_image img {
   border: 0;
   max-width:100%;
@@ -380,6 +375,7 @@ div.bx-wrapper{
 
 #product_details_hover h3 {
   color:#fff;
+  font-size:20px;
 }
 
 #product_details_hover .hover_link {
@@ -405,7 +401,9 @@ div.bx-wrapper{
                          Product
  ######################################################## */
 
-
+#product_wrapper{
+  margin-top:25px;
+}
 
 #product_details {
   float:right;
@@ -424,10 +422,57 @@ div.bx-wrapper{
   margin-left:20px;
 }
 
+.style_options {
+  font-size:120%;
+  margin:30px 0 40px 0;
+}
+
+#product_select{
+  width:300px;
+  font-size:13px;
+  font-family:Arial, sans-serif;
+  color:#444;
+}
+
+#product_actions{
+  margin:15px 0;
+}
+
+#product_actions input {
+  vertical-align:middle;
+}
+
+#product_actions a {
+  padding:5px;
+  vertical-align:middle;
+}
+
 #product_top_info .product_image img {
 	padding: 9px;
 	background: #FFF;
 }
+
+#product_bottom{
+  min-height:100px;
+}
+
+#product_thumbnails{
+  width:390px;
+}
+
+.thumbnail_wrapper {
+  float:right;
+  background:#fff;
+  padding:5px;
+  margin:5px 16px 5px 0;
+  height:100px;
+}
+
+.thumbnail_wrapper img {
+  width:100px;
+}
+
+/****************** Not TT **************************/
 
 #product_preview_images_l {
 	margin-left: 3px;
@@ -480,32 +525,47 @@ div.bx-wrapper{
 	
 }
 
-/* END: Product styles */
+/* ########################################################
+                         Blog and Article
+ ######################################################## */
 
-/* BEGIN: Blog styles */
-
-.blog {
+.post {
   padding-top: 15px;
   padding-bottom: 15px;
+  border-bottom:2px solid #fff;
 }
 
-.blog .title {
+.post .title {
 	font-size: 1.6em;
 	line-height: 2.2em;
 }
 
-.blog .date {
+.post .date {
 	margin-bottom: 5px;
 }
 
-.blog .content {
+.post .content {
 	line-height: 1.8em;
 }
 
-.blog_separator {
+.post_separator {
 	height: 1px;
 	margin: 0 21px 0 21px;
 	border-top: solid 1px #FFF;
+}
+
+#blog_archives {
+  float:right;  
+  padding-top: 15px;
+}
+
+#blog_archives ul {
+  padding-left:25px;
+}
+
+#blog_archives ul li a {
+  font-size:125%;
+  font-style: italic;
 }
 
 /* END: Blog styles */
