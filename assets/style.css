@@ -16,6 +16,10 @@ a:hover {
   color:#09C;
 }
 
+.bold {
+  font-weight:bold;
+}
+
 #main {
 	min-height: 600px;
 	text-align: left;
@@ -101,6 +105,7 @@ header #right_menu_info div {
 
 #contact_info a {
   margin: 0 5px;
+  font-weight:bold;
 }
 
 #contact_info .email_link {
@@ -115,6 +120,8 @@ footer {
 	bottom: 0px;
 	width: 100%;
 	clear: both;
+	border-top:2px solid #333;
+	padding-top:5px;
 }
 
 #footer_nav {
@@ -270,6 +277,11 @@ ul#collections {
 	border: none;
 	padding-left: 0;
 	color: #919191;
+	font-weight:bold;
+}
+
+ul#collections a.active {
+  color:#fff;
 }
 
 ul#collections li {

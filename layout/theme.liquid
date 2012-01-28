@@ -48,35 +48,11 @@
           <header>
             <nav id="main_menu" class="ten columns alpha">
               <ul class="nav">
-                {% for link in linklists.main-menu.links %}{% assign current = false %}
-                  {% if template == 'index' and link.url == '/' %}
-                    {% assign current = true %}
-                  {% elsif collection.url == link.url %}
-                    {% assign current = true %}
-                  {% elsif blog.url == link.url %}
-                    {% assign current = true %}
-                  {% elsif page.url == link.url %}
-                    {% assign current = true %}
-                  {% elsif page_title == link.title %}
-                    {% assign current = true %}
-                  {% elsif template == 'list-collections' and link.url == '/collections' %}
-                    {% assign current = true %}
-                  {% elsif page_title == 'Products' and link.url == '/collections/all' %}
-                    {% assign current = true %}
-                  {% elsif template == 'article' and link.url == article.url %}
-                    {% assign current = true %}{% endif %}
-                  <!-- {% capture child_list_handle %}{{ link.title | handle }}{% endcapture %} -->
-                  <li {% if forloop.first %}class="first"{% endif %} {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}class="dropdown" data-dropdown="dropdown"{% endif %}>
-                      <a class="{% if current %}active{% endif %}{% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %} dropdown-toggle{% endif %}" href="{{ link.url }}">{{ link.title }}</a>        
-                      <!-- {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
-                                            <ul class="dropdown-menu">
-                                              {% for l in linklists[child_list_handle].links %}
-                                              <li><a href="{{ l.url }}">{{ l.title }}</a></li>
-                                              {% endfor %}
-                                            </ul>
-                                            {% endif %} -->
-                    </li>
-                  {% endfor %}
+                {% for link in linklists.main-menu.links %}
+                <li {% if forloop.first %}class="first"{% endif %}>
+                  <a class="{% if link.active %}active{% endif %}" href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+                {% endfor %}
               </ul>
             </nav>      
             <div class="six columns omega" id="contact_info">

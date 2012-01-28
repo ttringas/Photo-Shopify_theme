@@ -10,10 +10,8 @@
     </div>
     <ul id="collections">
 
-    {% for collection in collections %}
-      {% if collection.title != 'Front Page' %}
-        <li><a href="{{collection.url}}" class="grey_link" title="{{collection.title}}">{{collection.title}}</a></li>
-      {% endif %}
+    {% for link in linklists.collections.links %}
+        <li><a href="{{link.url}}" class="grey_link {% if link.active %} active {% endif %}" title="{{link.title}}">{{link.title}}</a></li>
     {% endfor %}
 
     </ul>
