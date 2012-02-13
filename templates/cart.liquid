@@ -5,39 +5,24 @@
   }
 </script>
 
-<div id="main" class="span-46 last">
+<div id="main" class="sixteen columns">
 
-  <div id="sidebar" class="span-7 first">
-    <div class="title">
-      collections
-    </div>
-    <ul id="collections">
-  
-    {% for collection in collections %}
-      {% if collection.title != 'Frontpage' %}
-        <li><a href="{{collection.url}}" class="grey_link" title="{{collection.title}}">{{collection.title}}</a></li>
-      {% endif %}
-    {% endfor %}
-  
-    </ul>
-  </div>
-
-  <div class="span-39 last" id="cart_wrapper">
+  <div id="cart_wrapper">
     
     <div id="cart_content">
-      <div class="title">my cart</div>
+      <h3>My Cart</h3>
       
       <form action="/cart" method="post" id="cartform">
       
       <table class="cart">
         <tr class="rotules">
-          <td class="td_item" colspan="2">item</td>
-          <td class="td_quantity">quantity</td>
-          <td class="td_x">&nbsp;</td>
-          <td class="td_price">price</td>
-          <td class="td_equal">&nbsp;</td>
-          <td class="td_total">total</td>
-          <td class="td_checkout">&nbsp;</td>
+          <th class="td_item" colspan="2">item</td>
+          <th class="td_quantity">quantity</td>
+          <th class="td_x">&nbsp;</td>
+          <th class="td_price">price</td>
+          <th class="td_equal">&nbsp;</td>
+          <th class="td_total">total</td>
+          <th class="td_checkout">&nbsp;</td>
         </tr>
 
         {% for item in cart.items %}
@@ -55,18 +40,18 @@
 
         <tr class="rotules">
           <td colspan="2">&nbsp;</td>
-          <td><input type="image" src="{{ 'update_button.jpg' | asset_url }}" name="update" value="Update" id="update-cart" /></td>
+          <td><input type="button" name="update" value="Update" id="update-cart" /></td>
           <td>&nbsp;</td>
           <td>subtotal</td>
           <td>=</td>
-          <td>{{ cart.total_price | money }}</td>
-          <td><input type="image" src="{{ 'checkout_button.jpg' | asset_url }}" name="checkout" value="Checkout" title="Checkout" /></td>
+          <td class="total">{{ cart.total_price | money }}</td>
+          <td><input type="button" name="checkout" value="Checkout" title="Checkout" /></td>
         </tr>
       </table>
 
       </form>
 
-      <div class="cart_sections">
+      <div class="cart_sections twelve columns">
 
         <div class="cart_section">
           <div class="title">Terms and Conditions</div>

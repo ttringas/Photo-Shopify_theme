@@ -12,7 +12,7 @@
   </div>
   <div id="product_top_info" class="fourteen columns omega">
     <div id="product_main_image">
-      <a href="{{ product.featured_image | product_img_url: "grande" }}" rel="colorbox"><img id="main_image" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{product.title | escape }}" height="345" width="345"></a>
+      <a href="{{ product.featured_image | product_img_url: "grande" }}" rel="position: 'inside'" class="cloud-zoom"><img id="main_image" src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{product.title | escape }}" height="345" width="345"></a>
     </div>
     <div id="product_details">
       <div class="add_to_cart">
@@ -33,7 +33,7 @@
             {% endfor %}            
           </select>
           <div id="product_actions">
-            <input type="image" src="{{ 'add_to_cart.jpg' | asset_url }}">
+            <input type="submit" value="Add to Cart" class="add_cart_button">
             <a href="{{collection.url}}" class="white_link">Continue browsing this Collection &gt;</a>            
           </div>
         </form>

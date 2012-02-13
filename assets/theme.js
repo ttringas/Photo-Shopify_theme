@@ -1,5 +1,11 @@
 $(document).ready(function(){
    
+   $('a.sign_up').click(function(){
+     $('input#sign_up').submit();
+     alert("form submitted");
+     return false;
+   });
+   
    // Fire up the bxSlider http://www.bxslider.com/
    var slider = $('#collection_preview').bxSlider({
         mode: 'vertical',
@@ -22,7 +28,7 @@ $(document).ready(function(){
    
    //correct weird positioning of slider
    $('.bx-wrapper').css(
-     {'position' : 'absolute', 'right' : '0', 'top' : '162px'}
+     {'position' : 'absolute', 'right' : '0', 'top' : '150px'}
      );
    
     $('#collection_preview a').click(function() {
@@ -43,15 +49,15 @@ $(document).ready(function(){
         $('#product_details_hover').fadeOut('fast');
       }
     );
+    
+    $('#view_button').hover(function(){
+      $(this).toggleClass("hover");
+    });
    
    $('.thumbnail_wrapper a').click(function() {
      $('#product_main_image a').attr('href', $(this).attr('href')).data('rel', $(this).data('rel'));
      $('#product_main_image img').attr('src', $(this).attr('href'));
       return false;
-    });
-    
-    $('#product_main_image a').colorbox({
-      rel: 'colorbox'
     });
       
     

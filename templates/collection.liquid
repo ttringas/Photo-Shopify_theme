@@ -26,7 +26,7 @@
             <h3>{{ collection.products.first.title }}</h3>
             <p>
               <span class="hover_price">{{ collection.products.first.price | money_with_currency }}</span>
-              <a class="hover_link" href="{{ collection.products.first.url | within: collection }}">View</a>
+              <a class="hover_link" id="view_button" href="{{ collection.products.first.url | within: collection }}"></a>
             </p>
           </div>
         </a>  

@@ -14,9 +14,10 @@
     {% form 'customer' %}
     <div class="bold">WANT TO STAY IN TOUCH?</div>
     <input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter"/>
-    <input type="text" id="contact_email" name="contact[email]" placeholder="Email Address...">
+    <input type="text" id="contact_email" name="contact[email]" placeholder="Email Address">
     <div id="newsletter_signup">
-      <input type='image' src="{{ 'signup.png' | asset_url }}" class="submit" />
+      <input id="sign_up" type='submit' class="submit hidden" />
+      <a href="#" class="sign_up"><div id="sign_up"></div></a>
     </div>
     {% if form.errors %}
     <div id="signup_errors">
@@ -37,9 +38,9 @@
       <section class="image three columns offset-by-one omega"><img src="{{ 'news_photo.jpg' | asset_url }}"></section>
       {% for article in blogs.news.articles limit:1 %}
       <section class="title_section eight columns alpha omega">
-        <a href="{{ article.url }}" title="{{ article.title }}">News : <span class="bolder">{{ article.title }}</span></a>
+        <a href="{{ article.url }}" title="{{ article.title }}"><span class="grey_text">News: {{ article.title }}</span></a>
       </section>
-      <section class="title_content eight columns alpha omega">{{ article.content | strip_html | truncate: 250 }}</section>
+      <section class="title_content eight columns alpha omega"><p class="grey_text">{{ article.content | strip_html | truncate: 250 }}</p></section>
       {% endfor %}
     </article>
   </div><!-- index_news -->

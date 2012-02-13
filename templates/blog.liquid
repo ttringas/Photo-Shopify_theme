@@ -2,7 +2,7 @@
   <div id="blog_post_wrapper" class="twelve columns alpha">
     {% paginate blog.articles by 3 %}
     {% for article in blog.articles %}
-    <div class="post clearfix">
+    <div class="post clearfix {% if forloop.first %}first{% endif %}">
       <div class="article_thumbnail">
         {{ article.excerpt }}
       </div>
@@ -17,7 +17,7 @@
     {% endfor %}    
     <div class="pagination">
        {% if paginate.next %}
-         {{ "&lt;Older" | link_to: paginate.next.url }}
+         {{ "&lt; Older" | link_to: paginate.next.url }}
        {% endif %}   
 
        {% for part in paginate.parts %}
@@ -32,7 +32,7 @@
        {% endfor %}
 
        {% if paginate.previous %}
-         {{ "Newer&gt;" | link_to: paginate.previous.url }}
+         {{ "Newer &gt;" | link_to: paginate.previous.url }}
        {% endif %}
      </div>
      {% endpaginate %}
